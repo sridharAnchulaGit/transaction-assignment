@@ -36,4 +36,5 @@ public class Transaction {
 
     @Enumerated(EnumType.STRING)
     private TransactionStatus transactionStatus;
+
 }
