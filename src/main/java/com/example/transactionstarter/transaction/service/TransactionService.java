@@ -1,15 +1,17 @@
 package com.example.transactionstarter.transaction.service;
 
 import com.example.transactionstarter.transaction.dto.CreateTransactionRequest;
+import com.example.transactionstarter.transaction.dto.UpdateStatusRequest;
 import com.example.transactionstarter.transaction.entity.Transaction;
 import com.example.transactionstarter.transaction.enums.TransactionStatus;
 import com.example.transactionstarter.transaction.exception.DuplicateTransactionException;
+import com.example.transactionstarter.transaction.exception.InvalidStatusTransitionException;
 import com.example.transactionstarter.transaction.exception.ResourceNotFoundException;
 import com.example.transactionstarter.transaction.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.example.transactionstarter.transaction.dto.UpdateStatusRequest;
-import com.example.transactionstarter.transaction.exception.InvalidStatusTransitionException;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +23,8 @@ public class TransactionService {
 
         if (repository.existsById(request.getTransactionId())) {
             throw new DuplicateTransactionException(
-                    "Transaction ID already exists: " + request.getTransactionId());
+                    "Transaction ID already exists: "
+                            + request.getTransactionId());
         }
 
         Transaction transaction = new Transaction(
@@ -41,7 +44,8 @@ public class TransactionService {
         return repository.findById(transactionId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(
-                                "Transaction not found: " + transactionId));
+                                "Transaction not found: "
+                                        + transactionId));
     }
 
     public Transaction updateTransactionStatus(
@@ -51,7 +55,8 @@ public class TransactionService {
         Transaction transaction = repository.findById(transactionId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(
-                                "Transaction not found: " + transactionId));
+                                "Transaction not found: "
+                                        + transactionId));
 
         TransactionStatus currentStatus =
                 transaction.getTransactionStatus();
@@ -85,5 +90,11 @@ public class TransactionService {
                     "Transaction can only move from PENDING "
                             + "to SUCCESS or FAILED");
         }
+    }
+
+    public List<Transaction> getCustomerTransactions(
+            String customerId) {
+
+        return repository.findByCustomerId(customerId);
     }
 }
