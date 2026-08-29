@@ -8,6 +8,8 @@ import com.example.transactionstarter.transaction.exception.ResourceNotFoundExce
 import com.example.transactionstarter.transaction.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.example.transactionstarter.transaction.dto.UpdateStatusRequest;
+import com.example.transactionstarter.transaction.exception.InvalidStatusTransitionException;
 
 @Service
 @RequiredArgsConstructor
@@ -40,5 +42,48 @@ public class TransactionService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException(
                                 "Transaction not found: " + transactionId));
+    }
+
+    public Transaction updateTransactionStatus(
+            String transactionId,
+            UpdateStatusRequest request) {
+
+        Transaction transaction = repository.findById(transactionId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Transaction not found: " + transactionId));
+
+        TransactionStatus currentStatus =
+                transaction.getTransactionStatus();
+
+        TransactionStatus newStatus =
+                request.getStatus();
+
+        validateStatusTransition(currentStatus, newStatus);
+
+        transaction.setTransactionStatus(newStatus);
+
+        return repository.save(transaction);
+    }
+
+    private void validateStatusTransition(
+            TransactionStatus currentStatus,
+            TransactionStatus newStatus) {
+
+        if (currentStatus != TransactionStatus.PENDING) {
+            throw new InvalidStatusTransitionException(
+                    "Transaction cannot be updated from "
+                            + currentStatus
+                            + " to "
+                            + newStatus);
+        }
+
+        if (newStatus != TransactionStatus.SUCCESS
+                && newStatus != TransactionStatus.FAILED) {
+
+            throw new InvalidStatusTransitionException(
+                    "Transaction can only move from PENDING "
+                            + "to SUCCESS or FAILED");
+        }
     }
 }
