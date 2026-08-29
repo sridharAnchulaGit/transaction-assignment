@@ -137,4 +137,63 @@ class TransactionControllerTest {
         mockMvc.perform(get("/api/transactions/TXN9999"))
                 .andExpect(status().isNotFound());
     }
+
+    @Test
+    void shouldAcceptLowercaseTransactionType() throws Exception {
+
+        CreateTransactionRequest request =
+                new CreateTransactionRequest();
+
+        request.setTransactionId("TXN3001");
+        request.setCustomerId("CUST001");
+        request.setAmount(new BigDecimal("1000"));
+        request.setCurrency(Currency.INR);
+        request.setTransactionType(TransactionType.CREDIT);
+
+        Transaction transaction = new Transaction(
+                "TXN3001",
+                "CUST001",
+                new BigDecimal("1000"),
+                Currency.INR,
+                TransactionType.CREDIT,
+                TransactionStatus.PENDING
+        );
+
+        when(service.createTransaction(any(CreateTransactionRequest.class)))
+                .thenReturn(transaction);
+
+        String json = """
+            {
+                "transactionId": "TXN3001",
+                "customerId": "CUST001",
+                "amount": 1000,
+                "currency": "inr",
+                "transactionType": "credit"
+            }
+            """;
+
+        mockMvc.perform(post("/api/transactions")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    void shouldRejectInvalidTransactionType() throws Exception {
+
+        String json = """
+            {
+                "transactionId": "TXN3002",
+                "customerId": "CUST001",
+                "amount": 1000,
+                "currency": "INR",
+                "transactionType": "INVALID_TYPE"
+            }
+            """;
+
+        mockMvc.perform(post("/api/transactions")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isBadRequest());
+    }
 }

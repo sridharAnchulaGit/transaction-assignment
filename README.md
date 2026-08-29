@@ -1,109 +1,91 @@
-4# Transaction Starter Project
+# Transaction Processing Service
 
-This is the starter project for the Customer Transactions exercise.
+A Spring Boot REST API for creating, retrieving, updating, and querying customer transactions.
 
-## Before you start
-
-The first thing you should do after cloning the repository is:
-
-### Linux / macOS
-
-```bash
-./mvnw clean test
-```
-
-### Windows
-
-```bat
-mvnw.cmd clean test
-```
-
-The sample test should pass before you begin implementing the exercise.
-
-## What is already provided
+## Technology Stack
 
 - Java 17
-- Spring Boot
-- Maven wrapper
-- Spring Web
+- Spring Boot 3.5.5
 - Spring Data JPA
-- H2 embedded database
-- JUnit / Spring Boot Test
-- A sample REST endpoint: `GET /api/sample`
-- A sample test that loads the Spring context
+- H2 Database
+- Maven
+- JUnit 5
+- Mockito
+- Lombok
 
+## Features
 
-## Exercise
+The application provides the following transaction operations:
 
-Implement these four operations:
-
-1. Create transaction
-2. Get transaction
+1. Create a transaction
+2. Retrieve a transaction by transaction ID
 3. Update transaction status
-4. Get all transactions for a customer
+4. Retrieve all transactions for a customer
 
+Additional features include:
 
-You may change the surrounding design if you believe your solution is better.
+- Request validation
+- Duplicate transaction ID detection
+- Transaction status transition validation
+- Centralized exception handling
+- Case-insensitive enum input
+- Automated unit tests
+- Automated controller/API tests
 
-## Transaction fields
+---
 
-Every transaction contains:
+## Project Structure
 
-- Transaction ID
-- Customer ID
-- Amount
-- Currency
-- Transaction Type
-- Transaction Status
-
-### Validation rules
-
-Define what makes a transaction valid. At minimum, consider:
-
-- Transaction ID
-- Customer ID
-- Amount
-- Currency
-- Transaction type
-- Initial status
-
-Also explain any business validation you add beyond the annotations already supplied.
-
-## API skeleton
-
-### Create
-
-`TODO`
-
-Example:
-
-```
-TODO
-```
-
-### Get
-
-`TODO`
-
-### Update status
-
-`TODO`
-
-Example:
-
-```
-TODO
-```
-
-### Get customer transactions
-
-`TODO`
-
-## Testing expectations
-
-Add at least four meaningful tests.
-
-Your tests should cover more than just application startup. 
-
-You decide exactly which tests provide the best coverage.
-
+```text
+src/
+├── main/
+│   ├── java/
+│   │   └── com/example/transactionstarter/
+│   │       ├── sample/
+│   │       │   └── SampleController.java
+│   │       │
+│   │       ├── transaction/
+│   │       │   ├── controller/
+│   │       │   │   ├── TransactionController.java
+│   │       │   │   └── CustomerTransactionController.java
+│   │       │   │
+│   │       │   ├── dto/
+│   │       │   │   ├── CreateTransactionRequest.java
+│   │       │   │   └── UpdateStatusRequest.java
+│   │       │   │
+│   │       │   ├── entity/
+│   │       │   │   └── Transaction.java
+│   │       │   │
+│   │       │   ├── enums/
+│   │       │   │   ├── Currency.java
+│   │       │   │   ├── TransactionStatus.java
+│   │       │   │   └── TransactionType.java
+│   │       │   │
+│   │       │   ├── exception/
+│   │       │   │   ├── DuplicateTransactionException.java
+│   │       │   │   ├── InvalidStatusTransitionException.java
+│   │       │   │   ├── ResourceNotFoundException.java
+│   │       │   │   └── GlobalExceptionHandler.java
+│   │       │   │
+│   │       │   ├── repository/
+│   │       │   │   └── TransactionRepository.java
+│   │       │   │
+│   │       │   └── service/
+│   │       │       └── TransactionService.java
+│   │       │
+│   │       └── TransactionStarterApplication.java
+│   │
+│   └── resources/
+│       └── application.yml
+│
+└── test/
+    └── java/
+        └── com/example/transactionstarter/
+            ├── TransactionStarterApplicationTests.java
+            │
+            └── transaction/
+                ├── controller/
+                │   └── TransactionControllerTest.java
+                │
+                └── service/
+                    └── TransactionServiceTest.java
