@@ -22,4 +22,11 @@ public class TransactionController {
 
         return service.createTransaction(request);
     }
+
+    @GetMapping("/{transactionId}")
+    public Transaction getTransaction(
+            @PathVariable String transactionId) {
+
+        return service.getTransaction(transactionId);
+    }
 }
