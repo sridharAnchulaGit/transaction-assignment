@@ -243,7 +243,127 @@ Example: `GET /api/customers/CUST001/transactions` → `200 OK`:
 ## Test Run Output
 
 ```text
-<paste your actual `./mvnw clean test` console output here before submitting —
-specifically the final "Tests run: X, Failures: 0, Errors: 0" line and
-the BUILD SUCCESS line.>
+C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd -Didea.version=2026.2.1 -Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\intellij.maven.rt\maven-event-listener.jar -Djansi.passthrough=true -Dstyle.color=always -Dmaven.repo.local=C:\Users\Anchula Sridhar\.m2\repository clean test -f pom.xml
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.example:transaction-starter >-------------------
+[INFO] Building transaction-starter 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.1:clean (default-clean) @ transaction-starter ---
+[INFO] Deleting C:\Users\Anchula Sridhar\Desktop\transaction-assignment\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ transaction-starter ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ transaction-starter ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 16 source files with javac [debug parameters release 17] to target\classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ transaction-starter ---
+[INFO] skip non existing resourceDirectory C:\Users\Anchula Sridhar\Desktop\transaction-assignment\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ transaction-starter ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug parameters release 17] to target\test-classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ transaction-starter ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.transactionstarter.transaction.controller.TransactionControllerTest
+21:40:28.850 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.transactionstarter.transaction.controller.TransactionControllerTest]: TransactionControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:40:29.203 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.transactionstarter.TransactionStarterApplication for test class com.example.transactionstarter.transaction.controller.TransactionControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.5)
+
+2026-08-30T21:40:30.421+05:30  INFO 23296 --- [           main] c.e.t.t.c.TransactionControllerTest      : Starting TransactionControllerTest using Java 21.0.3 with PID 23296 (started by Anchula Sridhar in C:\Users\Anchula Sridhar\Desktop\transaction-assignment)
+2026-08-30T21:40:30.423+05:30  INFO 23296 --- [           main] c.e.t.t.c.TransactionControllerTest      : No active profile set, falling back to 1 default profile: "default"
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\Anchula Sridhar\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-08-30T21:40:34.021+05:30  INFO 23296 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-08-30T21:40:34.021+05:30  INFO 23296 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-08-30T21:40:34.024+05:30  INFO 23296 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-08-30T21:40:34.070+05:30  INFO 23296 --- [           main] c.e.t.t.c.TransactionControllerTest      : Started TransactionControllerTest in 4.734 seconds (process running for 7.072)
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.331 s -- in com.example.transactionstarter.transaction.controller.TransactionControllerTest
+[INFO] Running com.example.transactionstarter.transaction.service.TransactionServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.358 s -- in com.example.transactionstarter.transaction.service.TransactionServiceTest
+[INFO] Running com.example.transactionstarter.TransactionStarterApplicationTests
+2026-08-30T21:40:35.199+05:30  INFO 23296 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.transactionstarter.TransactionStarterApplicationTests]: TransactionStarterApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-30T21:40:35.235+05:30  INFO 23296 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.transactionstarter.TransactionStarterApplication for test class com.example.transactionstarter.TransactionStarterApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.5)
+
+2026-08-30T21:40:35.298+05:30  INFO 23296 --- [           main] c.e.t.TransactionStarterApplicationTests : Starting TransactionStarterApplicationTests using Java 21.0.3 with PID 23296 (started by Anchula Sridhar in C:\Users\Anchula Sridhar\Desktop\transaction-assignment)
+2026-08-30T21:40:35.299+05:30  INFO 23296 --- [           main] c.e.t.TransactionStarterApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2026-08-30T21:40:35.923+05:30  INFO 23296 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-30T21:40:36.036+05:30  INFO 23296 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91 ms. Found 1 JPA repository interface.
+2026-08-30T21:40:36.649+05:30  INFO 23296 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-30T21:40:36.795+05:30  INFO 23296 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2026-08-30T21:40:36.879+05:30  INFO 23296 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-08-30T21:40:37.351+05:30  INFO 23296 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-30T21:40:37.467+05:30  INFO 23296 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-30T21:40:38.087+05:30  INFO 23296 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:transactions user=SA
+2026-08-30T21:40:38.091+05:30  INFO 23296 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-30T21:40:38.245+05:30  INFO 23296 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-30T21:40:40.221+05:30  INFO 23296 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-30T21:40:40.335+05:30  INFO 23296 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-30T21:40:41.198+05:30  INFO 23296 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:transactions'
+2026-08-30T21:40:41.293+05:30  INFO 23296 --- [           main] c.e.t.TransactionStarterApplicationTests : Started TransactionStarterApplicationTests in 6.047 seconds (process running for 14.295)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.109 s -- in com.example.transactionstarter.TransactionStarterApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  25.396 s
+[INFO] Finished at: 2026-08-30T21:40:41+05:30
+[INFO] ------------------------------------------------------------------------
+
 ```
